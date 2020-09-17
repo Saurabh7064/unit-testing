@@ -4,6 +4,12 @@ import com.in28minutes.unittesting.unittesting.data.SomeDataService;
 import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -11,15 +17,14 @@ import static org.mockito.Mockito.when;
 
 // when(someDataService.retrieveAllData()).thenReturn(new int[]{2,3});
 // when() and thereturn() wch is alternative of stub
+@ExtendWith(MockitoExtension.class)
 public class SomeBusinessMockTest {
 
-    SomeBusinessImpl business = new SomeBusinessImpl();
-    SomeDataService someDataService = mock(SomeDataService.class);
+    @InjectMocks
+    SomeBusinessImpl business;
 
-    @BeforeEach
-     public void before() {
-        business.setSomeDataService(someDataService);
-    }
+    @Mock
+    SomeDataService someDataService;
 
     @Test
     public void calculateSumUsingDataService_basic() {

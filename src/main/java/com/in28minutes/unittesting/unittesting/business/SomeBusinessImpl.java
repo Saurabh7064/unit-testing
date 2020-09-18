@@ -33,4 +33,5 @@ public class SomeBusinessImpl {
         //Functional Style
         //return Arrays.stream(data).reduce(Integer::sum).orElse(0);
     }
+
 }

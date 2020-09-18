@@ -28,6 +28,7 @@ public class VoteTest {
         //and bydefault verify(vote).getResult have 1 times in so we have to use something like below
         //verify(vote,times(2)).getResult(stringArgumentCaptor.capture());
         verify(vote).getResult(stringArgumentCaptor.capture());
+        //verify(vote).getResult("no"); // failes because verify needs correct input from the result
         assertEquals("yes", stringArgumentCaptor.getValue());
     }
 }

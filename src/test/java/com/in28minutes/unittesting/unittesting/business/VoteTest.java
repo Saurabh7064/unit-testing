@@ -22,6 +22,11 @@ public class VoteTest {
     public void isEligibleToVote_test(){
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
         vote.isEligibleToVote(18);
+        //vote.isEligibleToVote(19);
+        //verify(vote).getResult(stringArgumentCaptor.capture());
+        //the above won't work because we are calling isEligibleTOVote two times
+        //and bydefault verify(vote).getResult have 1 times in so we have to use something like below
+        //verify(vote,times(2)).getResult(stringArgumentCaptor.capture());
         verify(vote).getResult(stringArgumentCaptor.capture());
         assertEquals("yes", stringArgumentCaptor.getValue());
     }
